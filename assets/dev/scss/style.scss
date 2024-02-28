@@ -1,0 +1,129 @@
+@import 'inc/normalize';
+@import 'inc/functions';
+@import 'inc/colors';
+@import 'inc/typography';
+@import 'inc/mixins';
+@import 'inc/buttons';
+@import 'inc/breadcrumbs';
+@import 'inc/accordion';
+@import 'inc/pagination';
+
+.no-scroll {
+    position: relative;
+    overflow-y: hidden;
+}
+
+.scroll-on {
+    visibility: visible;
+    overflow-y: auto;
+    opacity: 1;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    height: 100%;
+}
+
+body {
+    background-color: $grey-default;
+    color: $white;
+    font-family: 'Gilroy', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden !important;
+    -webkit-font-smoothing: antialiased;
+
+    &::-webkit-scrollbar {
+        background-color: $grey-coal;
+        width: pxToRem(4px);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $grey-light;
+        border-radius: pxToRem(2px);
+    }
+
+    &.scrolled {
+        .header {
+            background-color: $grey-coal;
+            padding: pxToRem(15px) 0;
+        }
+    }
+}
+
+ul {
+    font-size: pxTorem(16px);
+    line-height: pxTorem(24px);
+
+    @media screen and (max-width: 991px) {
+        font-size: pxToRem(14px);
+        line-height: pxToRem(20px);
+    }
+
+    @media screen and (max-width: 539px) {
+        font-size: pxToRem(12px);
+        line-height: pxToRem(14px);
+    }
+}
+
+// Main container.
+
+.main {
+    &__container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: pxToRem(1364px);
+        width: calc(100% - pxToRem(60px));
+
+        &-son {
+            padding-top: pxToRem(170px);
+
+            @media screen and (max-width: 767px) {
+                padding-top: pxToRem(134px);
+            }
+
+            @media screen and (max-width: 539px) {
+                padding-top: pxToRem(100px);
+            }
+        }
+
+        @media screen and (max-width: 991px) {
+            width: calc(100% - pxToRem(150px));
+        }
+
+        @media screen and (max-width: 767px) {
+            width: calc(100% - pxToRem(80px));
+        }
+
+        @media screen and (max-width: 599px) {
+            width: calc(100% - pxToRem(30px));
+        }
+    }
+
+    &__wrapper {}
+}
+
+@keyframes leftright {
+
+    0%,
+    20% {
+        transform: translateX(0%);
+        left: 0%;
+    }
+
+    80%,
+    100% {
+        transform: translateX(calc(180px - 100%));
+        left: 100%;
+    }
+}
+
+// Top navigation.
+
+.header {
+}
+
+
+// Sections.
+.section {
+}

@@ -1,0 +1,75 @@
+@import 'functions';
+@import 'colors';
+@import 'mixins';
+
+
+.accordion {
+
+  &__title,
+  &__name,
+  &__cost {
+    height: 50px;
+    border-radius: pxToRem(14px);
+  }
+
+  &__title,
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  &__name,
+  &__cost {
+    background-color: $grey-smog;
+    display: flex;
+    align-items: center;
+    @include strong-middle;
+  }
+  &__arrow{
+      @include transition-default;
+      transform: rotate(180deg);
+  }
+
+
+  &__title {
+    background-color: $grey-light;
+    @include heading-text;
+    padding-left: pxToRem(20px);
+    padding-right: pxToRem(20px);
+    cursor: pointer;
+    &.active{
+      .accordion__arrow{
+        transform: rotate(360deg);    
+      }
+    }
+  }
+  &__text{
+    display: none;
+  }
+  &__inner{
+    display: flex;
+    margin-top: 15px;
+    &.first{
+      margin-top: 0;
+    }
+  }
+  &__name{
+    padding-left: pxToRem(20px);
+    width: 100%;
+  }
+  &__cost{
+    max-width: pxToRem(195px);
+    width: 100%;
+    margin-left: pxToRem(15px);
+    text-align: center;
+    justify-content: center;
+    @media screen and (max-width: 767px) {
+      max-width: pxToRem(73px);
+    }
+  }
+
+
+}
+  

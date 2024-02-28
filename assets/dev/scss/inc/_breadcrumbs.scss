@@ -1,0 +1,52 @@
+@import 'functions';
+@import 'colors';
+@import 'mixins';
+
+
+.breadcrumbs {
+  margin-bottom: 40px;
+
+  &__inner {
+    overflow: hidden;
+    width: 100%;
+    @media screen and (max-width: 539px) {
+      white-space: nowrap;
+      overflow: scroll;
+    }
+  }
+
+  &__list {
+    li {
+      display: inline-block;
+      position: relative;
+      @include strong-middle;
+
+      &+li {
+        padding-left: pxToRem(25px);
+      
+        &::before {
+          position: absolute;
+          left: 0;
+          content: '/';
+          left: 4px;
+          color: $grey-smog;
+          margin: 0 0 0 pxToRem(7px);
+        }
+      }
+
+      &:last-child {
+        span{
+          padding-left: 4px;
+        }
+        a,
+        span {
+          color: $white;
+        }
+      }
+    }
+
+    a {
+      color: $grey-light;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "granit-prestige-layout",
+  "version": "1.0.0",
+  "description": "Granit Prestige layout",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Alexeev's Workshop (https://yurialexeev.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-cheerio": "^1.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssbeautify": "^3.0.0",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-install": "^1.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-svgmin": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "sass": "^1.71.1"
+  }
+}
