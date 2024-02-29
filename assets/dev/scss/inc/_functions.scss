@@ -1,14 +1,14 @@
 // PX to REM
 
 @function pxToRem($px-val) {
-    $remValue: ($px-val / 16) + rem; 
+    $remValue: ($px-val / 16px) + rem; 
     @return $remValue;
 }
 
 // PX to EM
 
 @function pxToEm($px-val) {
-    $emValue: ($px-val / 14) + em; 
+    $emValue: ($px-val / 14px) + em; 
     @return $emValue;
 }
 

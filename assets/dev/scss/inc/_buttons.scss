@@ -2,6 +2,7 @@
 @import "mixins";
 
 a {
+    display: table;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-tap-highlight-color: transparent;
     *outline: 0;
@@ -12,193 +13,49 @@ a {
     background-color: transparent;
     border: none;
     border-radius: pxToRem(14px);
-    @include font-btn;
     font-weight: bold;
-    padding: pxToRem(14px) pxToRem(32px);
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-tap-highlight-color: transparent;
     *outline: 0;
     overflow: hidden;
 
+    &-lg {
+        @include font-btn-lg;
+        padding: pxToRem(20px) pxToRem(30px);
+    }
+    &-sm {
+        @include font-btn-sm;
+        padding: pxToRem(15px) pxToRem(20px);
+
+        @media screen and (max-width: 531px) {
+            padding: pxToRem(10px) pxToRem(20px);
+        }
+    }
+
     @media screen and (max-width: 991px) {}
 
     @media screen and (max-width: 531px) {
         border-radius: pxToRem(10px);
-        padding: pxToRem(9px) pxToRem(25px);
     }
 
-    &__bordered {
-        border: pxToRem(2px) solid $grey-smog;
-
-        @media screen and (min-width: 1200px) {
-            position: relative;
-            @include transition-default;
-
-            &::before,
-            &::after {
-                position: absolute;
-                left: 50%;
-                content: '';
-                background-color: rgb($grey-smog, 0%);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                height: 0px;
-                width: 0px;
-                @include transition-default;
-                transition-duration: .5s;
-                z-index: -1;
-            }
-
-            &::before {
-                top: 110%;
-                transition-delay: .1s;
-            }
-
-            &::after {
-                top: -10%;
-            }
-
-            &:hover {
-
-                &::before,
-                &::after {
-                    height: 300px;
-                    width: 300px;
-                    transition-duration: 1s;
-                }
-
-                &::before {
-                    background-color: rgb($grey-smog, 100%);
-                }
-
-                &::after {
-                    background-color: rgb($grey-smog, 50%);
-                }
-            }
-        }
-    }
-
-    &__bordered-white {
-        border: pxToRem(2px) solid $white;
-
-        @media screen and (min-width: 1200px) {
-            position: relative;
-            @include transition-default;
-            z-index: 1;
-
-            &::before,
-            &::after {
-                position: absolute;
-                left: 50%;
-                content: '';
-                background-color: rgb($white, 0%);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                height: 0px;
-                width: 0px;
-                @include transition-default;
-                transition-duration: .5s;
-                z-index: -1;
-            }
-
-            &::before {
-                top: 110%;
-                transition-delay: .1s;
-            }
-
-            &::after {
-                top: -10%;
-            }
-
-            &:hover {
-                color: $grey-default;
-
-                &::before,
-                &::after {
-                    height: 300px;
-                    width: 300px;
-                    transition-duration: 1s;
-                }
-
-                &::before {
-                    background-color: rgb($white, 100%);
-                }
-
-                &::after {
-                    background-color: rgb($white, 50%);
-                }
-            }
-        }
-    }
-
-    &__about-video {
-        background-image: url("../images/btn-bg-about-video.png");
-        background-color: rgb($grey-dark, 60%);
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-blend-mode: multiply;
-        padding: pxToRem(14px) pxToRem(32px);
-        box-shadow: 0 pxToRem(14px) pxToRem(20px) rgb(black, 20%);
-        z-index: 1;
-
-        @media screen and (max-width: 991px) {}
-
-        @media screen and (max-width: 539px) {
-            padding: pxToRem(11px) pxToRem(22px);
-        }
-
-        &::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            content: '';
-            background-image: url("../images/video-noise.gif");
-            background-position: center;
-            background-size: 100%;
-            background-repeat: no-repeat;
-            opacity: 0;
-            z-index: -1;
-            height: 100%;
-            width: 100%;
-        }
-
-        >span {
-            margin-left: pxToRem(40px);
-            z-index: 1;
-
-            @media screen and (max-width: 991px) {}
-
-            @media screen and (max-width: 539px) {
-                margin-left: pxToRem(32px);
-            }
-        }
-
-        .icon-svg-play-rounded {
-            position: absolute;
-            top: 0;
-            left: auto;
-            fill: $white;
-            @include icon-play-size;
-        }
+    &__yellow {
+        border: pxToRem(2px) solid $yellow;
+        border-radius: pxToRem(14px);
+        background-color: $yellow;
+        box-shadow: 0px 15px 15px -10px rgba($yellow, 40%);
+        color: $black-chocolate;
 
         @media screen and (min-width: 1200px) {
             @include transition-default;
-            transition-property: background-size;
 
             &:hover {
-                background-color: rgb($grey-dark, 0%);
-                background-size: 110%;
-
-                &::before {
-                    opacity: 0.6;
-                }
+                background-color: $yellow-hovered;
             }
         }
     }
 
     &__with-arrow {
-        color: $grey-light;
+        color: $black-chocolate;
         @include transition-default;
         padding: pxToRem(14px) 0;
 
@@ -214,7 +71,7 @@ a {
                 position: absolute;
                 top: 0;
                 left: pxToRem(-68px);
-                fill: $grey-light;
+                fill: $black-chocolate;
                 display: inline-block;
                 height: pxToRem(12px);
                 width: pxToRem(34px);
@@ -227,7 +84,7 @@ a {
 
         @media screen and (min-width: 1200px) {
             &:hover {
-                color: $white;
+                color: $yellow;
 
                 .arrow-wrapper {
                     .icon-svg {
@@ -244,14 +101,14 @@ a {
     }
 
     &__hamburger {
-        background-color: $grey-smog;
+        background-color: $yellow;
         @include btn-hamburger-prop;
 
         >span {
             position: absolute;
             top: 50%;
             left: 50%;
-            background-color: $white;
+            background-color: $yellow;
             transform: translate(-50%, -50%);
             height: pxToRem(2px);
             width: pxToRem(24px);
@@ -290,7 +147,7 @@ a {
     }
 
     &__close {
-        background-color: $grey-default;
+        background-color: $yellow;
         @include btn-hamburger-prop;
 
         >span {

@@ -12,7 +12,7 @@
             if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
             return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
         },
-    })
+    }) 
 
     // $(document).bind('mousewheel', function (e) {
     //     const nt = $(document.body).scrollTop() - (e.deltaY * e.deltaFactor * 100);
@@ -101,19 +101,7 @@
         }).on('mouseout', function () {
             $(this).removeClass('shown');
         });
-
-        if ($(window).scrollTop() >= 10) {
-            $('body').addClass('scrolled');
-        }
-
-        $(window).scroll(function () {
-            let windowScrollTop = $(window).scrollTop();
-            if (windowScrollTop >= 10) {
-                $('body').addClass('scrolled');
-            } else {
-                $('body').removeClass('scrolled');
-            }
-        });
+        
         $('.accordion__title').on('click', function () {
             if ($('.accordion__wrapper').hasClass('one')) {
                 $('.accordion__title').not($(this)).removeClass('active');
@@ -126,6 +114,71 @@
             if ($(this).is('active')) {
                 $(this).removeAttr('href');
             }
+        });
+
+
+        const header = $('#main-header');
+        let lastScrollTop = 0;
+
+        $(window).on('scroll', function () {
+            const scrollTop = $(this).scrollTop();
+
+            if (scrollTop > lastScrollTop) {
+                // Скроллируем вниз
+                header.addClass('scroll-down').removeClass('scroll-up');
+            } else {
+                // Скроллируем вверх
+                header.removeClass('scroll-down').addClass('scroll-up');
+            }
+
+            if ($('body').hasClass('homepage') && scrollTop >= 20) {
+                $('body').addClass('scrolled');
+            } else {
+                $('body').removeClass('scrolled');
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Не даем значению быть отрицательным
+        });
+
+        const modal = $('#myModal');
+        const closeModalBtn = $('#closeModal');
+        const modalForm = $('#myForm');
+        const toggleMenuBtn = $('#toggle-menu');
+        const navigation = $('.navigation');
+
+        toggleMenuBtn.on('click', function () {
+            navigation.toggleClass('active');
+        });
+
+        $('#modal-btn').on('click', function () {
+            modal.addClass('opened');
+            $('body').css('overflow', 'hidden');
+        });
+
+        closeModalBtn.on('click', function () {
+            modal.removeClass('opened');
+            $('body').css('overflow', 'auto');
+        });
+
+        $(window).on('click', function (event) {
+            if (event.target === modal[0]) {
+            modal.removeClass('opened');
+            $('body').css('overflow', 'auto');
+            }
+        });
+
+        $(document).on('keydown', function (event) {
+            if (event.key === 'Escape' && modal.hasClass('opened')) {
+                modal.removeClass('opened');
+                $('body').css('overflow', 'auto');
+            }
+        });
+
+        // $('#phone').inputmask('+7 (999) 999-99-99');
+
+        modalForm.on('submit', function (event) {
+            event.preventDefault();
+            // Добавьте здесь код для обработки отправки формы
         });
 
     });

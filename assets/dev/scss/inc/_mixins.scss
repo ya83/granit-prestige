@@ -57,7 +57,7 @@
         bottom: 0;
         right: 0;
         content: '';
-        background-color: $grey-light;
+        background-color: $grey;
         transform: translateY(pxToRem(8px));
         width: 0;
         height: pxToRem(2px);
@@ -89,13 +89,21 @@
     }
 }
 
-@mixin font-btn {
+@mixin font-btn-lg {
+    font-size: pxToRem(20px);
+    line-height: pxToRem(24px);
+
+    @media screen and (max-width: 539px) {
+        font-size: pxToRem(18px);
+        line-height: pxToRem(22px);
+    }
+}
+
+@mixin font-btn-sm {
     font-size: pxToRem(16px);
     line-height: pxToRem(20px);
 
     @media screen and (max-width: 539px) {
-        font-size: pxToRem(14px);
-        line-height: pxToRem(18px);
     }
 
     @media screen and (max-width: 539px) {}
@@ -245,7 +253,7 @@
                 position: absolute;
                 left: (50%);
                 top: (50%);
-                transform: translate(-50%, -50%)scale(0.4);
+                transform: translate(-50%, -50%) scale(0.4);
                 height: 50px;
                 width: 50px;
                 background-image: url('../images/svg/play-btn.svg');
